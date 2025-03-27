@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Real Estate GPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Real Estate GPT</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/search">Property Search</a></li>
+                <li><a href="/market">Market Analysis</a></li>
+                <li><a href="/about" class="active">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-container">
+            <!-- About Header -->
+            <div class="about-header">
+                <h1>About Real Estate GPT</h1>
+                <p>Revolutionizing property search with artificial intelligence</p>
+            </div>
+
+            <!-- About Content -->
+            <div class="about-content">
+                <!-- Our Story -->
+                <div class="about-story">
+                    <h2>Our Story</h2>
+                    <p>Real Estate GPT was born from a vision to simplify the property search process. By combining cutting-edge AI technology with real estate expertise, we've created a platform that understands your needs and helps you find your perfect property efficiently.</p>
+                </div>
+
+                <!-- Our Mission -->
+                <div class="about-mission">
+                    <h2>Our Mission</h2>
+                    <p>To revolutionize the real estate industry by providing intelligent, personalized property recommendations and market insights, making property search seamless and enjoyable for everyone.</p>
+                </div>
+
+                <!-- Our Values -->
+                <div class="values-grid">
+                    <div class="value-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Innovation</h3>
+                        <p>Leveraging advanced AI to provide smart, personalized property recommendations.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Trust & Transparency</h3>
+                        <p>Providing accurate, up-to-date information and market insights you can rely on.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Customer First</h3>
+                        <p>Focusing on your needs and preferences to find your ideal property.</p>
+                    </div>
+                </div>
+
+                <!-- Team Section -->
+                <div class="team-section">
+                    <h2>Our Team</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Meet Modi</h3>
+                            <p>Founder & CEO</p>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Keshav Sharma</h3>
+                            <p>Head of AI</p>
+                        </div>
+
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Aditya Yadav</h3>
+                            <p>Real Estate Expert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Search - Real Estate GPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Real Estate GPT</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('search') }}" class="active">Property Search</a></li>
+                <li><a href="{{ url_for('market') }}">Market Analysis</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="search-container">
+            <h1>Find Your Perfect Property</h1>
+            <div class="search-filters">
+                <div class="filter-group">
+                    <label for="location">Location</label>
+                    <select id="location" name="location">
+                        <option value="">Select Location</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="bhk">Property Type</label>
+                    <select id="bhk" name="bhk">
+                        <option value="">Select BHK</option>
+                        <option value="1">1 BHK</option>
+                        <option value="2">2 BHK</option>
+                        <option value="3">3 BHK</option>
+                        <option value="4">4 BHK</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price-range">Price Range</label>
+                    <div class="range-inputs">
+                        <input type="number" id="min-price" placeholder="Min Price">
+                        <input type="number" id="max-price" placeholder="Max Price">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label for="area-range">Area (sq. ft.)</label>
+                    <div class="range-inputs">
+                        <input type="number" id="min-area" placeholder="Min Area">
+                        <input type="number" id="max-area" placeholder="Max Area">
+                    </div>
+                </div>
+            </div>
+            <button id="search-btn" class="btn-primary">Search Properties</button>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="results-header">
+            <h2>0 Properties Found</h2>
+            <div class="sort-options">
+                <label for="sort">Sort by:</label>
+                <select id="sort">
+                    <option value="relevance">Relevance</option>
+                    <option value="price_low">Price: Low to High</option>
+                    <option value="price_high">Price: High to Low</option>
+                    <option value="area">Area</option>
+                    <option value="value">Best Value</option>
+                </select>
+            </div>
+        </div>
+        <div class="properties-grid">
+            <!-- Properties will be added here dynamically -->
+        </div>
+        <div class="pagination">
+            <!-- Pagination will be added here dynamically -->
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

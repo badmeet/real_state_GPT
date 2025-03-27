@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate GPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Real Estate GPT</a>
+            <ul class="nav-links">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="{{ url_for('search') }}">Property Search</a></li>
+                <li><a href="{{ url_for('market') }}">Market Analysis</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your AI-Powered Real Estate Assistant</h1>
+            <p>Find your perfect property with the help of advanced artificial intelligence</p>
+            <div class="hero-buttons">
+                <button class="btn-primary start-chat">Start Chat</button>
+                <a href="{{ url_for('search') }}" class="btn-secondary">Search Properties</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Why Choose Real Estate GPT?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Powered Search</h3>
+                <p>Our intelligent assistant understands your requirements and finds the perfect properties.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Market Analysis</h3>
+                <p>Get real-time insights about property trends and market valuations.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location Intelligence</h3>
+                <p>Discover the best neighborhoods based on your preferences and needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personalized Recommendations Section -->
+    <section class="recommendations-section">
+        <div class="container">
+            <h2>Personalized Recommendations</h2>
+            <p class="section-description">Curated property recommendations based on price range, location, and surrounding amenities.</p>
+            
+            <!-- Premium Properties -->
+            <div class="recommendations-category">
+                <h3><i class="fas fa-crown"></i> Premium Properties</h3>
+                <div class="recommendations-grid">
+                    {% for prop in recommendations.premium %}
+                    <div class="property-card">
+                        <div class="property-header">
+                            <span class="property-tag premium">Premium</span>
+                            <h4>{{ prop.location }}</h4>
+                            <div class="property-price">₹{{ "%.1f"|format(prop.price) }}L</div>
+                        </div>
+                        <div class="property-details">
+                            <div class="detail-item">
+                                <i class="fas fa-bed"></i>
+                                <span>{{ prop.bhk }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-vector-square"></i>
+                                <span>{{ prop.size }} sq.ft.</span>
+                            </div>
+                        </div>
+                        <div class="property-amenities">
+                            <h5>Key Amenities</h5>
+                            <div class="amenities-list">
+                                {% for amenity in prop.amenities[:3] %}
+                                <span class="amenity-tag">{{ amenity }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="property-highlights">
+                            <h5>Highlights</h5>
+                            <ul>
+                                {% for highlight in prop.highlights %}
+                                <li><i class="fas fa-check"></i> {{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Mid-Range Properties -->
+            <div class="recommendations-category">
+                <h3><i class="fas fa-star"></i> Value for Money</h3>
+                <div class="recommendations-grid">
+                    {% for prop in recommendations.mid_range %}
+                    <div class="property-card">
+                        <div class="property-header">
+                            <span class="property-tag mid-range">Mid Range</span>
+                            <h4>{{ prop.location }}</h4>
+                            <div class="property-price">₹{{ "%.1f"|format(prop.price) }}L</div>
+                        </div>
+                        <div class="property-details">
+                            <div class="detail-item">
+                                <i class="fas fa-bed"></i>
+                                <span>{{ prop.bhk }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-vector-square"></i>
+                                <span>{{ prop.size }} sq.ft.</span>
+                            </div>
+                        </div>
+                        <div class="property-amenities">
+                            <h5>Key Amenities</h5>
+                            <div class="amenities-list">
+                                {% for amenity in prop.amenities[:3] %}
+                                <span class="amenity-tag">{{ amenity }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="property-highlights">
+                            <h5>Highlights</h5>
+                            <ul>
+                                {% for highlight in prop.highlights %}
+                                <li><i class="fas fa-check"></i> {{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Affordable Properties -->
+            <div class="recommendations-category">
+                <h3><i class="fas fa-piggy-bank"></i> Budget-Friendly Options</h3>
+                <div class="recommendations-grid">
+                    {% for prop in recommendations.affordable %}
+                    <div class="property-card">
+                        <div class="property-header">
+                            <span class="property-tag affordable">Affordable</span>
+                            <h4>{{ prop.location }}</h4>
+                            <div class="property-price">₹{{ "%.1f"|format(prop.price) }}L</div>
+                        </div>
+                        <div class="property-details">
+                            <div class="detail-item">
+                                <i class="fas fa-bed"></i>
+                                <span>{{ prop.bhk }}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-vector-square"></i>
+                                <span>{{ prop.size }} sq.ft.</span>
+                            </div>
+                        </div>
+                        <div class="property-amenities">
+                            <h5>Key Amenities</h5>
+                            <div class="amenities-list">
+                                {% for amenity in prop.amenities[:3] %}
+                                <span class="amenity-tag">{{ amenity }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="property-highlights">
+                            <h5>Highlights</h5>
+                            <ul>
+                                {% for highlight in prop.highlights %}
+                                <li><i class="fas fa-check"></i> {{ highlight }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Interface (Initially Hidden) -->
+    <div class="chat-overlay">
+        <div class="chat-section">
+            <div class="chat-wrapper">
+                <div class="chat-header">
+                    <button class="close-chat"><i class="fas fa-times"></i></button>
+                    <span>Real Estate Assistant</span>
+                </div>
+                
+                <div class="chat-container">
+                    <!-- Messages will be added here by JavaScript -->
+                </div>
+                
+                <div class="input-area">
+                    <textarea 
+                        class="message-input" 
+                        placeholder="Message Real Estate GPT..."
+                        rows="1"
+                        maxlength="4000"
+                    ></textarea>
+                    <button class="send-button" disabled></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+<style>
+.recommendations-section {
+    padding: 4rem 0;
+    background: var(--section-bg);
+}
+
+.section-description {
+    color: var(--chat-light-text);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.recommendations-category {
+    margin-bottom: 3rem;
+}
+
+.recommendations-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--chat-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.recommendations-category h3 i {
+    color: var(--chat-primary);
+}
+
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.property-card {
+    background: var(--glass-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+}
+
+.property-header {
+    margin-bottom: 1rem;
+}
+
+.property-tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.property-tag.premium {
+    background: rgba(255, 185, 0, 0.1);
+    color: #ffc107;
+}
+
+.property-tag.mid-range {
+    background: rgba(16, 163, 127, 0.1);
+    color: var(--chat-primary);
+}
+
+.property-tag.affordable {
+    background: rgba(25, 135, 84, 0.1);
+    color: #198754;
+}
+
+.property-header h4 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: var(--chat-text);
+}
+
+.property-price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--chat-primary);
+}
+
+.property-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--chat-text);
+}
+
+.property-amenities {
+    margin: 1rem 0;
+}
+
+.property-amenities h5, .property-highlights h5 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    color: var(--chat-text);
+    opacity: 0.8;
+}
+
+.amenities-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.amenity-tag {
+    background: rgba(16, 163, 127, 0.1);
+    color: var(--chat-primary);
+    padding: 0.2rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.property-highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.property-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--chat-text);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.property-highlights li i {
+    color: var(--chat-primary);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .property-card {
+        padding: 1rem;
+    }
+}
+</style> 

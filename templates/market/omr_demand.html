@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growing Demand in OMR - Real Estate GPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Real Estate GPT</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('search') }}">Property Search</a></li>
+                <li><a href="{{ url_for('market') }}" class="active">Market Analysis</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- OMR Demand Analysis -->
+    <section class="market-detail-section">
+        <div class="market-detail-container">
+            <div class="market-detail-header">
+                <a href="{{ url_for('market') }}" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Market Analysis
+                </a>
+                <h1>Growing Demand in OMR</h1>
+                <p>Explore the rising property demand and growth factors in Old Mahabalipuram Road.</p>
+            </div>
+
+            <!-- Key Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div class="stat-value">+10.2%</div>
+                    <h3>Price Growth</h3>
+                    <p>Year over Year</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-building"></i>
+                    <div class="stat-value">15+</div>
+                    <h3>New Projects</h3>
+                    <p>Launched in 2024</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-value">High</div>
+                    <h3>Buyer Interest</h3>
+                    <p>Growing Demand</p>
+                </div>
+            </div>
+
+            <!-- Detailed Analysis -->
+            <div class="analysis-content">
+                <div class="analysis-section">
+                    <h2>Price Trends Analysis</h2>
+                    <div class="trend-filters">
+                        <button class="trend-btn active" data-type="all">All Properties</button>
+                        <button class="trend-btn" data-type="2">2 BHK</button>
+                        <button class="trend-btn" data-type="3">3 BHK</button>
+                        <button class="trend-btn" data-type="4">4 BHK</button>
+                    </div>
+                    <div class="charts-grid">
+                        <div class="chart-wrapper" id="allPropertiesWrapper">
+                            <h3>All Properties Comparison</h3>
+                            <canvas id="chartAllBHK"></canvas>
+                        </div>
+                        <div class="chart-wrapper bhk-chart" style="display: none;">
+                            <h3>2 BHK Properties</h3>
+                            <canvas id="chart2BHK"></canvas>
+                        </div>
+                        <div class="chart-wrapper bhk-chart" style="display: none;">
+                            <h3>3 BHK Properties</h3>
+                            <canvas id="chart3BHK"></canvas>
+                        </div>
+                        <div class="chart-wrapper bhk-chart" style="display: none;">
+                            <h3>4 BHK Properties</h3>
+                            <canvas id="chart4BHK"></canvas>
+                        </div>
+                    </div>
+                    <div class="trend-insights">
+                        <h3>Key Observations</h3>
+                        <ul>
+                            <li>2 BHK properties show consistent pricing across most locations</li>
+                            <li>3 BHK properties have higher price variations between premium and standard locations</li>
+                            <li>4 BHK properties command premium prices in Sholinganallur and Thoraipakkam</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Growth Factors</h2>
+                    <div class="factor-grid">
+                        <div class="factor-card">
+                            <i class="fas fa-laptop"></i>
+                            <h3>IT Corridor</h3>
+                            <p>Home to major tech companies and IT parks, driving employment and housing demand.</p>
+                        </div>
+                        <div class="factor-card">
+                            <i class="fas fa-road"></i>
+                            <h3>Infrastructure</h3>
+                            <p>Improved connectivity with expanded roads and upcoming metro rail project.</p>
+                        </div>
+                        <div class="factor-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Education Hub</h3>
+                            <p>Presence of prestigious educational institutions attracting families.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <h2>Future Growth Prospects</h2>
+                    <div class="prospects-content">
+                        <div class="prospect-item">
+                            <h3><i class="fas fa-subway"></i> Metro Connectivity</h3>
+                            <p>The upcoming metro rail project will significantly improve connectivity and property values.</p>
+                        </div>
+                        <div class="prospect-item">
+                            <h3><i class="fas fa-building"></i> Commercial Growth</h3>
+                            <p>New IT parks and commercial developments planned, driving further residential demand.</p>
+                        </div>
+                        <div class="prospect-item">
+                            <h3><i class="fas fa-city"></i> Smart City Features</h3>
+                            <p>Implementation of smart city initiatives enhancing quality of life and property appeal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Trends Section -->
+                <div class="analysis-section">
+                    <div class="section-header">
+                        <h2>Price Trends</h2>
+                        <div class="time-filters">
+                            <button class="time-btn active" data-period="1Y">1Y</button>
+                            <button class="time-btn" data-period="6M">6M</button>
+                            <button class="time-btn" data-period="3M">3M</button>
+                            <button class="time-btn" data-period="1M">1M</button>
+                        </div>
+                    </div>
+                    <div class="trend-chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                    <div class="trend-summary">
+                        <div class="summary-card">
+                            <h4>Average Price</h4>
+                            <div class="price">₹85.6L</div>
+                            <div class="change positive">+10.2% YoY</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Price Range</h4>
+                            <div class="price">₹45L - ₹120L</div>
+                            <div class="sub-text">Across all properties</div>
+                        </div>
+                        <div class="summary-card">
+                            <h4>Growth Rate</h4>
+                            <div class="price">8.5%</div>
+                            <div class="sub-text">Quarterly average</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    .charts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 2rem 0;
+        width: 100%;
+    }
+
+    .chart-wrapper {
+        background: var(--glass-bg);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        height: 500px;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
+    #allPropertiesWrapper {
+        grid-column: 1 / -1;
+        height: 600px;
+    }
+
+    .market-detail-container {
+        max-width: 1400px; /* Increased from default */
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .chart-wrapper h3 {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--chat-text);
+        font-size: 1.5rem;
+    }
+
+    .trend-filters {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .trend-btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        background: var(--glass-bg);
+        color: var(--chat-text);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .trend-btn:hover {
+        background: rgba(16, 163, 127, 0.1);
+    }
+
+    .trend-btn.active {
+        background: var(--chat-primary);
+        color: white;
+    }
+
+    @media (min-width: 1024px) {
+        .charts-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        #allPropertiesWrapper {
+            grid-column: 1 / -1;
+        }
+
+        .chart-wrapper {
+            min-width: 100%;
+        }
+    }
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .time-filters {
+        display: flex;
+        gap: 0.5rem;
+        background: var(--glass-bg);
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    .time-btn {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--chat-text);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .time-btn:hover {
+        background: rgba(16, 163, 127, 0.1);
+    }
+
+    .time-btn.active {
+        background: var(--chat-primary);
+        color: white;
+    }
+
+    .trend-chart-container {
+        background: var(--glass-bg);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: var(--card-shadow);
+        height: 500px;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
+    .trend-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    .summary-card {
+        background: var(--glass-bg);
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .summary-card h4 {
+        color: var(--chat-text);
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.8;
+    }
+
+    .summary-card .price {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--chat-text);
+        margin-bottom: 0.5rem;
+    }
+
+    .summary-card .change {
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .summary-card .change.positive {
+        color: var(--chat-primary);
+    }
+
+    .summary-card .sub-text {
+        font-size: 0.9rem;
+        color: var(--chat-light-text);
+    }
+
+    @media (max-width: 768px) {
+        .section-header {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .time-filters {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    .section-description {
+        color: var(--chat-light-text);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .recommendations-category {
+        margin-bottom: 3rem;
+    }
+
+    .recommendations-category h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--chat-text);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .recommendations-category h3 i {
+        color: var(--chat-primary);
+    }
+
+    .recommendations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .property-card {
+        background: var(--glass-bg);
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease;
+    }
+
+    .property-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .property-header {
+        margin-bottom: 1rem;
+    }
+
+    .property-tag {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .property-tag.premium {
+        background: rgba(255, 185, 0, 0.1);
+        color: #ffc107;
+    }
+
+    .property-tag.mid-range {
+        background: rgba(16, 163, 127, 0.1);
+        color: var(--chat-primary);
+    }
+
+    .property-tag.affordable {
+        background: rgba(25, 135, 84, 0.1);
+        color: #198754;
+    }
+
+    .property-header h4 {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+        color: var(--chat-text);
+    }
+
+    .property-price {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--chat-primary);
+    }
+
+    .property-details {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--chat-text);
+    }
+
+    .property-amenities {
+        margin: 1rem 0;
+    }
+
+    .property-amenities h5, .property-highlights h5 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        color: var(--chat-text);
+        opacity: 0.8;
+    }
+
+    .amenities-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .amenity-tag {
+        background: rgba(16, 163, 127, 0.1);
+        color: var(--chat-primary);
+        padding: 0.2rem 0.6rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+
+    .property-highlights ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .property-highlights li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--chat-text);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .property-highlights li i {
+        color: var(--chat-primary);
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+        .recommendations-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .property-card {
+            padding: 1rem;
+        }
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Process the real estate data
+        const realEstateData = {{ data|tojson|safe }};
+        const marketStats = {{ stats|tojson|safe }};
+
+        // Prepare data for the charts
+        const locations = realEstateData.map(item => item.Location);
+
+        function createBHKChart(bhkType, chartId) {
+            const prices = realEstateData.map(item => item[bhkType]);
+            const ctx = document.getElementById(chartId);
+            
+            if (!ctx) {
+                console.error(`Canvas element ${chartId} not found`);
+                return null;
+            }
+
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: locations,
+                    datasets: [{
+                        label: `${bhkType} Average Price`,
+                        data: prices,
+                        backgroundColor: 'rgba(16, 163, 127, 0.8)',
+                        borderColor: 'rgba(16, 163, 127, 1)',
+                        borderWidth: 1,
+                        barPercentage: 0.6,
+                        categoryPercentage: 0.8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `₹${context.parsed.y.toFixed(2)} Lakhs`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Price (Lakhs)',
+                                font: {
+                                    size: 14
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 45,
+                                font: {
+                                    size: 12
+                                },
+                                padding: 10
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createAllPropertiesChart() {
+            const ctx = document.getElementById('chartAllBHK');
+            
+            if (!ctx) {
+                console.error('Canvas element chartAllBHK not found');
+                return null;
+            }
+
+            const bhkTypes = ['2 BHK', '3 BHK', '4 BHK'];
+            const datasets = bhkTypes.map((bhkType, index) => {
+                const prices = realEstateData.map(item => item[bhkType]);
+                const colors = [
+                    'rgba(16, 163, 127, 0.8)',
+                    'rgba(14, 144, 111, 0.8)',
+                    'rgba(12, 125, 95, 0.8)'
+                ];
+
+                return {
+                    label: bhkType,
+                    data: prices,
+                    backgroundColor: colors[index],
+                    borderColor: colors[index].replace('0.8', '1'),
+                    borderWidth: 1,
+                    barPercentage: 0.6,
+                    categoryPercentage: 0.8
+                };
+            });
+
+            return new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: locations,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ₹${context.parsed.y.toFixed(2)} Lakhs`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Price (Lakhs)',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize charts
+        try {
+            console.log('Creating charts...');
+            const chartAll = createAllPropertiesChart();
+            const chart2BHK = createBHKChart('2 BHK', 'chart2BHK');
+            const chart3BHK = createBHKChart('3 BHK', 'chart3BHK');
+            const chart4BHK = createBHKChart('4 BHK', 'chart4BHK');
+            console.log('Charts created successfully');
+
+            // Handle filter buttons
+            document.querySelectorAll('.trend-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    
+                    // Update active state
+                    document.querySelectorAll('.trend-btn').forEach(btn => 
+                        btn.classList.remove('active')
+                    );
+                    this.classList.add('active');
+                    
+                    // Show/hide relevant charts
+                    if (type === 'all') {
+                        document.getElementById('allPropertiesWrapper').style.display = 'block';
+                        document.querySelectorAll('.bhk-chart').forEach(chart => 
+                            chart.style.display = 'none'
+                        );
+                    } else {
+                        document.getElementById('allPropertiesWrapper').style.display = 'none';
+                        document.querySelectorAll('.bhk-chart').forEach(chart => {
+                            if (chart.querySelector(`#chart${type}BHK`)) {
+                                chart.style.display = 'block';
+                            } else {
+                                chart.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        } catch (error) {
+            console.error('Error creating charts:', error);
+        }
+    });
+
+    function generateMonthlyData(months) {
+        const data = [];
+        const basePrice = marketStats.avg_price || 85.6;
+        const monthlyGrowth = 0.01; // 1% monthly growth
+        const volatility = 0.03; // 3% volatility
+        
+        for(let i = 0; i < months; i++) {
+            const randomFactor = 1 + (Math.random() - 0.5) * volatility;
+            const price = basePrice * (1 + i * monthlyGrowth) * randomFactor;
+            data.push(price);
+        }
+        
+        return data;
+    }
+
+    function createPriceChart() {
+        const ctx = document.getElementById('priceChart');
+        if (!ctx) {
+            console.error('Price chart canvas not found');
+            return;
+        }
+
+        const months = 12;
+        const priceData = generateMonthlyData(months);
+        
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: months}, (_, i) => {
+                    const date = new Date();
+                    date.setMonth(date.getMonth() - (months - 1 - i));
+                    return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+                }),
+                datasets: [{
+                    label: 'Average Price (Lakhs)',
+                    data: priceData,
+                    borderColor: 'rgba(16, 163, 127, 1)',
+                    backgroundColor: 'rgba(16, 163, 127, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `₹${context.parsed.y.toFixed(2)}L`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Price (Lakhs)',
+                            font: {
+                                size: 14
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Handle time period buttons
+        document.querySelectorAll('.time-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const period = this.dataset.period;
+                let months;
+                
+                switch(period) {
+                    case '1Y': months = 12; break;
+                    case '6M': months = 6; break;
+                    case '3M': months = 3; break;
+                    case '1M': months = 1; break;
+                    default: months = 12;
+                }
+                
+                const newData = generateMonthlyData(months);
+                const newLabels = Array.from({length: months}, (_, i) => {
+                    const date = new Date();
+                    date.setMonth(date.getMonth() - (months - 1 - i));
+                    return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+                });
+                
+                chart.data.labels = newLabels;
+                chart.data.datasets[0].data = newData;
+                chart.update();
+                
+                // Update active state
+                document.querySelectorAll('.time-btn').forEach(btn => 
+                    btn.classList.remove('active')
+                );
+                this.classList.add('active');
+            });
+        });
+
+        return chart;
+    }
+
+    // Initialize the price chart
+    try {
+        console.log('Creating price chart...');
+        const priceChart = createPriceChart();
+        console.log('Price chart created successfully');
+
+        // Update summary cards with actual statistics
+        if (marketStats) {
+            document.querySelector('.summary-card .price').textContent = 
+                `₹${marketStats.avg_price.toFixed(1)}L`;
+            document.querySelector('.summary-card .change.positive').textContent = 
+                `+${marketStats.yoy_growth}% YoY`;
+            document.querySelector('.summary-card:nth-child(2) .price').textContent = 
+                `₹${marketStats.price_range.min.toFixed(1)}L - ₹${marketStats.price_range.max.toFixed(1)}L`;
+            document.querySelector('.summary-card:nth-child(3) .price').textContent = 
+                `${marketStats.quarterly_growth}%`;
+        }
+    } catch (error) {
+        console.error('Error creating price chart:', error);
+    }
+    </script>
+</body>
+</html> 

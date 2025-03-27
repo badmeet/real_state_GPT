@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Returns Analysis - Real Estate GPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="/" class="nav-logo">Real Estate GPT</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('search') }}">Property Search</a></li>
+                <li><a href="{{ url_for('market') }}" class="active">Market Analysis</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Investment Returns Analysis -->
+    <section class="market-detail-section">
+        <div class="market-detail-container">
+            <div class="market-detail-header">
+                <a href="{{ url_for('market') }}" class="back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Market Analysis
+                </a>
+                <h1>Investment Returns Analysis</h1>
+                <p>Comprehensive analysis of real estate investment returns in Chennai</p>
+            </div>
+
+            <!-- Key Returns Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Average Rental Yield</h3>
+                    <p class="stat-value">3.5%</p>
+                    <p class="stat-note">Annual Returns</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Capital Appreciation</h3>
+                    <p class="stat-value">8-12%</p>
+                    <p class="stat-note">Annual Growth</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-coins"></i>
+                    <h3>Total ROI</h3>
+                    <p class="stat-value">12-15%</p>
+                    <p class="stat-note">Combined Returns</p>
+                </div>
+            </div>
+
+            <!-- Returns by Location -->
+            <div class="returns-section">
+                <h2>Returns by Location</h2>
+                <div class="location-returns-grid">
+                    <div class="location-card">
+                        <h3>OMR</h3>
+                        <div class="return-stats">
+                            <div class="return-item">
+                                <span>Rental Yield:</span>
+                                <span>4.2%</span>
+                            </div>
+                            <div class="return-item">
+                                <span>Capital Growth:</span>
+                                <span>10.2%</span>
+                            </div>
+                        </div>
+                        <p class="highlight">Best for: Long-term Investment</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>Sholinganallur</h3>
+                        <div class="return-stats">
+                            <div class="return-item">
+                                <span>Rental Yield:</span>
+                                <span>3.8%</span>
+                            </div>
+                            <div class="return-item">
+                                <span>Capital Growth:</span>
+                                <span>9.5%</span>
+                            </div>
+                        </div>
+                        <p class="highlight">Best for: Balanced Returns</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>Karapakkam</h3>
+                        <div class="return-stats">
+                            <div class="return-item">
+                                <span>Rental Yield:</span>
+                                <span>3.6%</span>
+                            </div>
+                            <div class="return-item">
+                                <span>Capital Growth:</span>
+                                <span>8.8%</span>
+                            </div>
+                        </div>
+                        <p class="highlight">Best for: Rental Income</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Investment Strategies -->
+            <div class="strategies-section">
+                <h2>Investment Strategies</h2>
+                <div class="strategies-grid">
+                    <div class="strategy-card">
+                        <div class="strategy-header">
+                            <i class="fas fa-home"></i>
+                            <h3>Buy and Hold</h3>
+                        </div>
+                        <ul class="strategy-points">
+                            <li>Long-term capital appreciation</li>
+                            <li>Steady rental income</li>
+                            <li>Best for 5+ year horizon</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-header">
+                            <i class="fas fa-sync"></i>
+                            <h3>Value Add</h3>
+                        </div>
+                        <ul class="strategy-points">
+                            <li>Property improvements</li>
+                            <li>Higher rental returns</li>
+                            <li>Quick appreciation</li>
+                        </ul>
+                    </div>
+                    <div class="strategy-card">
+                        <div class="strategy-header">
+                            <i class="fas fa-building"></i>
+                            <h3>New Development</h3>
+                        </div>
+                        <ul class="strategy-points">
+                            <li>Pre-launch benefits</li>
+                            <li>Modern amenities</li>
+                            <li>Better appreciation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis -->
+            <div class="risk-section">
+                <h2>Risk Analysis</h2>
+                <div class="risk-grid">
+                    <div class="risk-card">
+                        <h3>Market Risks</h3>
+                        <ul>
+                            <li>Price fluctuations</li>
+                            <li>Interest rate changes</li>
+                            <li>Market cycles</li>
+                        </ul>
+                        <p class="risk-level">Risk Level: Moderate</p>
+                    </div>
+                    <div class="risk-card">
+                        <h3>Location Risks</h3>
+                        <ul>
+                            <li>Infrastructure delays</li>
+                            <li>Area development</li>
+                            <li>Competition</li>
+                        </ul>
+                        <p class="risk-level">Risk Level: Low-Moderate</p>
+                    </div>
+                    <div class="risk-card">
+                        <h3>Rental Risks</h3>
+                        <ul>
+                            <li>Vacancy periods</li>
+                            <li>Tenant quality</li>
+                            <li>Maintenance costs</li>
+                        </ul>
+                        <p class="risk-level">Risk Level: Low</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
